@@ -7,7 +7,7 @@ ENV POSTGRES_HOST=localhost
 ENV POSTGRES_PORT=5432
 ENV POSTGRES_USER=admin
 ENV POSTGRES_PASSWORD=password
-ENV POSTGRES_DB=database
+ENV POSTGRES_DB=postgres
 
 COPY go.mod go.sum ./
 RUN go mod download && go mod verify

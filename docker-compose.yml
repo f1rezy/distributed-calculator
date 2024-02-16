@@ -1,6 +1,17 @@
 version: "3.8"
 
 services:
+  database:
+    image: postgres:16.2-alpine
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database_data:/var/lib/postgresql/data
+  
   app:
     build: .
     ports:
@@ -12,20 +23,9 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=database
+      - POSTGRES_DB=postgres
     depends_on: 
       - database
-
-  database:
-    image: postgres:16.2-alpine
-    environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=database
-    ports:
-      - 5432:5432
-    volumes:
-      - ./database_data:/var/lib/postgresql/data
   
   pgadmin:
     image: dpage/pgadmin4
