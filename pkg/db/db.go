@@ -19,12 +19,12 @@ type Expression struct {
 
 func ConnectToPostgreSQL(host, port, user, password, dbname string) (*gorm.DB, error) {
 	dsn := fmt.Sprintf(
-		"user=%s password=%s dbname=%s host=%s port=%s sslmode=disable",
+		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
 		user,
 		password,
-		dbname,
 		host,
 		port,
+		dbname,
 	)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
