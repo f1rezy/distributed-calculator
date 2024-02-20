@@ -28,6 +28,8 @@
 
 ## Деплой
 
+На ПК должен быть установлен [docker](https://www.docker.com/) актуальной версии.
+
 Настроить переменные среды можно изменив файл конфигурации:
 - [docker-compose.yml](https://github.com/f1rezy/distributed-calculator/blob/main/docker-compose.yml)
 
